@@ -103,4 +103,7 @@ venv.bak/
 .mypy_cache/
 
 # pyCharm
-.idea/
+.idea
+
+# CI
+.circleci
