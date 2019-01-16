@@ -1,7 +1,7 @@
 # Thread synchronization using Semaphore
 
-from threading import Thread
 from threading import Semaphore
+from threading import Thread
 
 
 def print_even_numbers(number_range, even_semaphore, odd_semaphore):

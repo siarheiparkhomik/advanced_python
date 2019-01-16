@@ -1,7 +1,7 @@
 # Thread synchronization using Lock
 
-from threading import Thread
 from threading import Lock
+from threading import Thread
 from time import sleep
 
 

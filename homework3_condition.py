@@ -1,7 +1,7 @@
 # Thread synchronization using Condition
 
-from threading import Thread
 from threading import Condition
+from threading import Thread
 
 
 def print_even_numbers(number_range, condition_obj):

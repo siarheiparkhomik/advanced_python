@@ -1,7 +1,7 @@
 # Thread synchronization using Event
 
-from threading import Thread
 from threading import Event
+from threading import Thread
 
 
 def print_even_numbers(number_range, even_event_obj, odd_event_obj):
@@ -42,8 +42,10 @@ if __name__ == "__main__":
     numbers = range(101)
     even_event = Event()
     odd_event = Event()
-    thread1 = Thread(name="event_env", target=print_even_numbers, args=(numbers, even_event, odd_event))
-    thread2 = Thread(name="event_odd", target=print_odd_numbers, args=(numbers, even_event, odd_event))
+    thread1 = Thread(name="event_env", target=print_even_numbers,
+                     args=(numbers, even_event, odd_event))
+    thread2 = Thread(name="event_odd", target=print_odd_numbers,
+                     args=(numbers, even_event, odd_event))
     thread1.start()
     thread2.start()
     even_event.set()
