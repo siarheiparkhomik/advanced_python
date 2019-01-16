@@ -5,8 +5,8 @@ from time import sleep
 
 
 def print_even_numbers(number_range):
-    """
-    Prints even numbers from input range of numbers
+    """Prints even numbers from input range of numbers
+
     :param number_range: range of numbers
     :return:
     """
@@ -17,8 +17,8 @@ def print_even_numbers(number_range):
 
 
 def print_odd_numbers(number_range):
-    """
-    Prints odd numbers from input range of numbers
+    """Prints odd numbers from input range of numbers
+
     :param number_range: range of numbers
     :return:
     """

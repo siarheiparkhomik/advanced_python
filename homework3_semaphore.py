@@ -1,11 +1,12 @@
 # Thread synchronization using Semaphore
 
-from threading import Thread, Semaphore
+from threading import Thread
+from threading import Semaphore
 
 
 def print_even_numbers(number_range, even_semaphore, odd_semaphore):
-    """
-    Prints even numbers from input range of numbers
+    """Prints even numbers from input range of numbers
+
     :param number_range: range of numbers
     :param even_semaphore: Semaphore object for even Thread synchronization
     :param odd_semaphore: Semaphore object for odd Thread synchronization
@@ -20,8 +21,8 @@ def print_even_numbers(number_range, even_semaphore, odd_semaphore):
 
 
 def print_odd_numbers(number_range, even_semaphore, odd_semaphore):
-    """
-    Prints odd numbers from input range of numbers
+    """Prints odd numbers from input range of numbers
+
     :param number_range: range of numbers
     :param even_semaphore: Semaphore object for even Thread synchronization
     :param odd_semaphore: Semaphore object for odd Thread synchronization
@@ -39,7 +40,7 @@ if __name__ == "__main__":
     numbers = range(101)
     even_sem = Semaphore(1)
     odd_sem = Semaphore(0)
-    thread1 = Thread(name="lock_even", target=print_even_numbers, args=(numbers, even_sem, odd_sem))
-    thread2 = Thread(name="lock_odd", target=print_odd_numbers, args=(numbers, even_sem, odd_sem))
+    thread1 = Thread(name="sem_even", target=print_even_numbers, args=(numbers, even_sem, odd_sem))
+    thread2 = Thread(name="sem_odd", target=print_odd_numbers, args=(numbers, even_sem, odd_sem))
     thread1.start()
     thread2.start()

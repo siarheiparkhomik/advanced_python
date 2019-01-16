@@ -1,12 +1,13 @@
 # Thread synchronization using Lock
 
-from threading import Thread, Lock
+from threading import Thread
+from threading import Lock
 from time import sleep
 
 
 def print_even_numbers(number_range, lock_object):
-    """
-    Print even numbers from input range of numbers
+    """Print even numbers from input range of numbers
+
     :param number_range: range of numbers
     :param lock_object: lock object for threads synchronization
     :return:
@@ -19,8 +20,8 @@ def print_even_numbers(number_range, lock_object):
 
 
 def print_odd_numbers(number_range, lock_object):
-    """
-    Print odd numbers from input range of numbers
+    """Print odd numbers from input range of numbers
+
     :param number_range: range of numbers
     :param lock_object: lock object for threads synchronization
     :return:

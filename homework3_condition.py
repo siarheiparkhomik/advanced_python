@@ -1,11 +1,12 @@
 # Thread synchronization using Condition
 
-from threading import Thread, Condition
+from threading import Thread
+from threading import Condition
 
 
 def print_even_numbers(number_range, condition_obj):
-    """
-    Prints even numbers from input range of numbers
+    """Prints even numbers from input range of numbers
+
     :param number_range: range of numbers
     :param condition_obj: condition object for threads synchronization
     :return:
@@ -19,8 +20,8 @@ def print_even_numbers(number_range, condition_obj):
 
 
 def print_odd_numbers(number_range, condition_obj):
-    """
-    Prints odd numbers from input range of numbers
+    """Prints odd numbers from input range of numbers
+
     :param number_range: range of numbers
     :param condition_obj: condition object for threads synchronization
     :return:
@@ -34,8 +35,8 @@ def print_odd_numbers(number_range, condition_obj):
 
 
 def producer(condition_object):
-    """
-    Starts threads execution by notifying
+    """Starts threads execution by notifying
+
     :param condition_object: condition object for threads synchronization
     :return:
     """
@@ -46,8 +47,8 @@ def producer(condition_object):
 if __name__ == "__main__":
     numbers = range(101)
     condition = Condition()
-    thread1 = Thread(name="condition_even", target=print_even_numbers, args=(numbers, condition))
-    thread2 = Thread(name="condition_odd", target=print_odd_numbers, args=(numbers, condition))
+    thread1 = Thread(name="cond_even", target=print_even_numbers, args=(numbers, condition))
+    thread2 = Thread(name="cond_odd", target=print_odd_numbers, args=(numbers, condition))
     thread3 = Thread(name="producer", target=producer, args=(condition,))
     thread1.start()
     thread2.start()
