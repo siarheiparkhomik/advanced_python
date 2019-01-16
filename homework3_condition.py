@@ -47,8 +47,10 @@ def producer(condition_object):
 if __name__ == "__main__":
     numbers = range(101)
     condition = Condition()
-    thread1 = Thread(name="cond_even", target=print_even_numbers, args=(numbers, condition))
-    thread2 = Thread(name="cond_odd", target=print_odd_numbers, args=(numbers, condition))
+    thread1 = Thread(name="cond_even", target=print_even_numbers,
+                     args=(numbers, condition))
+    thread2 = Thread(name="cond_odd", target=print_odd_numbers,
+                     args=(numbers, condition))
     thread3 = Thread(name="producer", target=producer, args=(condition,))
     thread1.start()
     thread2.start()

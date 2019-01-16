@@ -36,7 +36,9 @@ def print_odd_numbers(number_range, lock_object):
 if __name__ == "__main__":
     numbers = range(101)
     lock = Lock()
-    thread1 = Thread(name="lock_even", target=print_even_numbers, args=(numbers, lock))
-    thread2 = Thread(name="lock_odd", target=print_odd_numbers, args=(numbers, lock))
+    thread1 = Thread(name="lock_even", target=print_even_numbers,
+                     args=(numbers, lock))
+    thread2 = Thread(name="lock_odd", target=print_odd_numbers,
+                     args=(numbers, lock))
     thread1.start()
     thread2.start()

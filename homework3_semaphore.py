@@ -40,7 +40,9 @@ if __name__ == "__main__":
     numbers = range(101)
     even_sem = Semaphore(1)
     odd_sem = Semaphore(0)
-    thread1 = Thread(name="sem_even", target=print_even_numbers, args=(numbers, even_sem, odd_sem))
-    thread2 = Thread(name="sem_odd", target=print_odd_numbers, args=(numbers, even_sem, odd_sem))
+    thread1 = Thread(name="sem_even", target=print_even_numbers,
+                     args=(numbers, even_sem, odd_sem))
+    thread2 = Thread(name="sem_odd", target=print_odd_numbers,
+                     args=(numbers, even_sem, odd_sem))
     thread1.start()
     thread2.start()
