@@ -43,8 +43,10 @@ def print_odd_numbers(number_range, connection):
 if __name__ == "__main__":
     numbers = range(101)
     even_connect, odd_connect = Pipe()
-    even_process = Process(target=print_even_numbers, args=(numbers, even_connect))
-    odd_process = Process(target=print_odd_numbers, args=(numbers, odd_connect))
+    even_process = Process(target=print_even_numbers,
+                           args=(numbers, even_connect))
+    odd_process = Process(target=print_odd_numbers,
+                          args=(numbers, odd_connect))
     even_process.start()
     odd_process.start()
     odd_connect.send("start")
