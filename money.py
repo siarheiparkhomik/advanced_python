@@ -3,9 +3,10 @@
 from converter import Converter
 
 
-class Money:
+class Money(object):
     """Class represents money object
     """
+
     CONVERTER = Converter()
 
     def __init__(self, value, currency="EUR"):
@@ -14,7 +15,7 @@ class Money:
 
     def __mul__(self, other):
         value = self.value * other
-        return __class__(value, self.currency)
+        return self.__class__(value, self.currency)
 
     def __rmul__(self, other):
         value = self.value * other

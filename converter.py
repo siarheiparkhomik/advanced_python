@@ -4,9 +4,10 @@ import json
 import requests
 
 
-class Converter:
+class Converter(object):
     """Class that represents converter object
     """
+
     URL = "http://free.currencyconverterapi.com/"
 
     @classmethod
@@ -16,6 +17,7 @@ class Converter:
         :param to_currency: the currency to convert to
         :return: currencies ratio
         """
+
         currencies = "{}_{}".format(from_currency, to_currency)
         request = "{}api/v5/convert?q={}&compact=ultra".format(cls.URL,
                                                                currencies)
