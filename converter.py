@@ -1,4 +1,5 @@
 """Module contains converter realization
+
 """
 import json
 import requests
@@ -6,13 +7,14 @@ import requests
 
 class Converter(object):
     """Class that represents converter object
-    """
 
+    """
     URL = "http://free.currencyconverterapi.com/"
 
     @classmethod
     def get_currencies_ratio(cls, from_currency, to_currency):
         """Return the ration of two specified currencies
+
         :param from_currency: the currency to convert from
         :param to_currency: the currency to convert to
         :return: currencies ratio

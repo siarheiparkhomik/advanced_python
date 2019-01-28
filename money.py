@@ -1,12 +1,13 @@
 """Contains Money class realization
+
 """
 from converter import Converter
 
 
 class Money(object):
     """Class represents money object
-    """
 
+    """
     CONVERTER = Converter()
 
     def __init__(self, value, currency="EUR"):
