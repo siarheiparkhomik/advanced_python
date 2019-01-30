@@ -1,11 +1,13 @@
-"""Module implements downloading a number of files using asyncio and threads."""
+"""Module implements downloading a number of files using asyncio and
+threads."""
 
 import aiohttp
 import asyncio
 import os
 import requests
+import threading
 import time
-from threading import Thread
+
 
 files_dict = {"50MB": "http://ipv4.download.thinkbroadband.com/50MB.zip",
               "100MB": "http://ipv4.download.thinkbroadband.com/100MB.zip",
@@ -42,9 +44,9 @@ if __name__ == "__main__":
     start_time = time.time()
     loop = asyncio.get_event_loop()
     loop.run_until_complete(async_download())
-    print("Async download takes {} sec".format(time.time()-start_time))
+    print("Async download takes {} sec".format(time.time() - start_time))
     start_time = time.time()
     for _, url in files_dict.items():
-        thread = Thread(target=sync_download_by_url, args=(url,))
+        thread = threading.Thread(target=sync_download_by_url, args=(url,))
         thread.run()
     print("Thread download takes {} sec".format(time.time() - start_time))
