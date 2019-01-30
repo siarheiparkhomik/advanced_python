@@ -1,2 +1,4 @@
+requests
+aiohttp
 flake8
 pydocstyle
