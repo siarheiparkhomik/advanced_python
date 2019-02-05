@@ -19,9 +19,9 @@ items = {("map", 9, 150), ("compass", 13, 35), ("water", 153, 200),
 items_to_get = islice(
     sorted(starmap(Item, items), key=lambda x: x.value / x.weight,
            reverse=True), len(list(takewhile(lambda x: x < 400, accumulate(
-            [x.weight for x in
-             sorted(starmap(Item, items), key=lambda x: x.value / x.weight,
-                    reverse=True)])))))
+            [x.weight for x in sorted(starmap(Item, items),
+                                      key=lambda x: x.value / x.weight,
+                                      reverse=True)])))))
 
 if __name__ == "__main__":
     for item in items_to_get:
