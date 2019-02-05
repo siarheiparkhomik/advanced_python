@@ -4,7 +4,6 @@ from itertools import islice
 from itertools import starmap
 from itertools import takewhile
 
-
 Item = namedtuple("Item", "item, weight, value")
 
 items = {("map", 9, 150), ("compass", 13, 35), ("water", 153, 200),
@@ -17,11 +16,13 @@ items = {("map", 9, 150), ("compass", 13, 35), ("water", 153, 200),
          ("socks", 4, 50), ("book", 30, 10)}
 
 items_to_get = islice(
-    sorted(starmap(Item, items), key=lambda x: x.value / x.weight,
-           reverse=True), len(list(takewhile(lambda x: x < 400, accumulate(
-            [x.weight for x in sorted(starmap(Item, items),
-                                      key=lambda x: x.value / x.weight,
-                                      reverse=True)])))))
+    sorted(
+        starmap(Item, items), key=lambda x: x.value / x.weight,
+        reverse=True),
+    len(list(takewhile(lambda x: x < 400, accumulate(
+        [x.weight for x in
+         sorted(starmap(Item, items), key=lambda x: x.value / x.weight,
+                reverse=True)])))))
 
 if __name__ == "__main__":
     for item in items_to_get:
