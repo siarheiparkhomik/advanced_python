@@ -2,8 +2,7 @@ import re
 
 
 def generate_properties(args):
-    """Check if dict includes specific methods and if yes, creates properties
-    according the names of this methods
+    """Generate properties according class arguments
 
     :param args: dict oof class arguments
     :return: dict with added properties
