@@ -3,7 +3,6 @@ threads."""
 
 import aiohttp
 import asyncio
-import os
 import requests
 import threading
 import time
@@ -14,9 +13,9 @@ files_dict = {"50MB": "http://ipv4.download.thinkbroadband.com/50MB.zip",
               "200MB": "http://ipv4.download.thinkbroadband.com/200MB.zip"}
 
 
-async def async_download_by_url(session, url_addr):
+async def async_download_by_url(session, url_addr, file_name):
     async with session.get(url_addr) as response:
-        filename = os.path.basename(url_addr)
+        filename = "async_{}".format(file_name)
         with open(filename, 'wb') as f_handle:
             while True:
                 chunk = await response.content.read(1024)
@@ -29,12 +28,12 @@ async def async_download_by_url(session, url_addr):
 async def async_download():
     for file_name, url_addr in files_dict.items():
         async with aiohttp.ClientSession() as session:
-            await async_download_by_url(session, url_addr)
+            await async_download_by_url(session, url_addr, file_name)
 
 
-def sync_download_by_url(url_addr):
-    response = requests.get(url)
-    filename = "sync_{}".format(os.path.basename(url_addr))
+def thread_download(file_name, url_addr):
+    response = requests.get(url_addr)
+    filename = "sync_{}".format(file_name)
     with open(filename, 'wb') as f_handle:
         for chunk in response.iter_content(1024):
             f_handle.write(chunk)
@@ -46,7 +45,12 @@ if __name__ == "__main__":
     loop.run_until_complete(async_download())
     print("Async download takes {} sec".format(time.time() - start_time))
     start_time = time.time()
-    for _, url in files_dict.items():
-        thread = threading.Thread(target=sync_download_by_url, args=(url,))
-        thread.run()
+    threads = []
+    for file_name, url_addr in files_dict.items():
+        threads.append(threading.Thread(target=thread_download,
+                                        args=(file_name, url_addr)))
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
     print("Thread download takes {} sec".format(time.time() - start_time))
